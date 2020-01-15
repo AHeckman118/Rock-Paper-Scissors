@@ -1,0 +1,17 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\partightenfactor0
+
+\f0\fs24 \cf0 Overview \
+Group Information: Aaron Heckman and Kiran Chana, aheckman@bu.edu and kchana@bu.edu Description: We designed an AI using visual recognition techniques discussed in class, including feature matching, tracking the position and orientation of moving objects, and evaluation of "movement blobs". This AI uses a webcam to play games of Rock Paper Scissors with the user. It does so by tracking motion in the webcam, determining when the user has formed a fist and is shaking it up and down, then takes a picture of the last frame before movement stops and compares that with a given template using feature matching and whatever mode it is in to determine what it should play in response. It can intentionally win, lose, or draw. The AI can be, and often is wrong. \
+Graphics \
+The graphics consists of a scorekeeper for the AI and player(which only increment based on the mode the ai is in), as well as a display of which direction the ai thinks the player's hand is moving. The \
+Technical Information & Data \
+Game is divided into 4 states. State 1 is the idle state, during which the AI is looking for an object moving up and down to start the game. Once it detects an object, it moves into state 2, the Start state. In the start state, the game takes a picture of the frame where the object stops moving and compares it to template images using feature recognition. The best matching key point distances are taken and averaged, then compared, and the lowest of the three is decided as the user's throw. This is returned along with the computer's choice, based on the mode it's in, and these two bits of data are carried into the Throw state. In the throw state, the game displays the player's choice and its own choice. Finally, it goes into the results state, which just tells the user whether they won or lost and then goes back into the idle state. \
+Data: Ran a total of 20 tests per throw and this is the confusion matrix produced from that: rock paper scissors rock [ 7 7 6 ] paper [ 10 7 3 ] scissors [ 7 7 6 ] This data tells us that the AI isn't very good at Rock Paper Scissors. I would guess that the reason is that the images we were using as templates were not very strong. Perhaps feature-matching would have been a better approach to comparing the two images. Regardless, the code will be included in this zip file along with this report. \
+Sources \
+using openCV: https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html \
+}

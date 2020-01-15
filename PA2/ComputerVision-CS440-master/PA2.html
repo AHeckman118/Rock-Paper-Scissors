@@ -1,0 +1,78 @@
+<html>
+ <head>
+  <title>
+  Playing Rock Paper Scissors with an AI
+  Aaron Heckman and Kiran Chana
+  </title>
+ </head>
+ <body>
+  <h1>
+  Overview
+  </h1>
+  <p>
+<div>
+   Group Information: Aaron Heckman and Kiran Chana, aheckman@bu.edu and kchana@bu.edu 
+</div>
+Description: We designed an AI using visual recognition techniques discussed in class, including feature matching, tracking the position and orientation of moving objects, and evaluation of "movement blobs". This AI uses a webcam to play games of Rock Paper Scissors with the user. It does so by tracking motion in the webcam, determining when the user has formed a fist and is shaking it up and down, then takes a picture of the last frame before movement stops and compares that with a given template using feature matching and whatever mode it is in to determine what it should play in response. It can intentionally win, lose, or draw. The AI can be, and often is wrong. 
+  </p>
+  <h2>
+   Graphics
+  </h2>
+  <p>
+The graphics consists of a scorekeeper for the AI and player(which only increment based on the mode the ai is in), as well as a display of which direction the ai thinks the player's hand is moving. After a sign is thrown, the ai's throw will be displayed and what it thought the player played, before disappearing.
+  </p>
+  <h2>
+   Technical Information & Data
+  </h2>
+  <p>
+   Game is divided into 4 states. State 1 is the idle state, during which the AI is looking for an object moving up and down to start the game. Once it detects an object, it moves into state 2, the Start state. In the start state, the game takes a picture of the frame where the object stops moving and compares it to template images using feature recognition. The best matching key point distances are taken and averaged, then compared, and the lowest of the three is decided as the user's throw. This is returned along with the computer's choice, based on the mode it's in, and these two bits of data are carried into the Throw state. In the throw state, the game displays the player's choice and its own choice. Finally, it goes into the results state, which just tells the user whether they won or lost and then goes back into the idle state. 
+  </p>
+  <h3>
+   Data: 20 tests per throw
+  </h3>
+  <style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-yw4l"><br></th>
+    <th class="tg-yw4l">rock</th>
+    <th class="tg-yw4l">paper</th>
+    <th class="tg-yw4l">scissors</th>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">rock</td>
+    <td class="tg-yw4l">7</td>
+    <td class="tg-yw4l">7</td>
+    <td class="tg-yw4l">6</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">paper</td>
+    <td class="tg-yw4l">10</td>
+    <td class="tg-yw4l">7</td>
+    <td class="tg-yw4l">3</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">scissors</td>
+    <td class="tg-yw4l">7</td>
+    <td class="tg-yw4l">7</td>
+    <td class="tg-yw4l">6</td>
+  </tr>
+</table>
+<h3>
+Conclusions
+</h3>
+<p>
+This data tells us that the AI isn't very good at Rock Paper Scissors. I would guess that the reason is that the images we were using as templates were not very strong. Perhaps feature-matching would have been a better approach to comparing the two images. Regardless, the code will be included in this zip file along with this report. 
+</p>
+<h4>
+sources
+</h4>
+<p>
+using openCV: https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_tutorials.html 
+</p>
+ </body>
+</html>
